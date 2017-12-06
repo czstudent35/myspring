@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.myspring.mapper.ItemMapper">
+
+    <!-- 查询产品名称-->
+    <select id="queryItem" parameterType="QueryItem" resultType="Item">
+        SELECT * from item
+        <where>
+            <!--<if test="item_id!=null and item_id!=''">-->
+                <!--and item_id=#{item_id}-->
+            <!--</if>-->
+            <if test="listID!=null and listID.size>0">
+                <foreach collection="listID" open=" and item_id in(" close=")" item="item_id" separator="," >
+                    #{item_id}
+                </foreach>
+
+            </if>
+            <if test="item.item_name!=null and item.item_id!=''">
+                and item_name like '%${item.item_name}%'
+            </if>
+        </where>
+
+
+    </select>
+
+    <select id="queryItem1" parameterType="List" resultType="Item">
+        SELECT * from item
+        <where>
+
+            <if test="list!=null">
+                <foreach collection="list" open=" and item_id in(" close=")" item="item" separator="," >
+                    #{item.item_id}
+                </foreach>
+
+            </if>
+
+        </where>
+
+
+    </select>
+
+    <!-- 根据id获取产品信息 -->
+    <select id="findItemById" parameterType="String" resultType="Item">
+        select * from item where item_id = #{id}
+    </select>
+    <!-- 自定义条件查询产品列表 -->
+    <select id="findItemByItemName" parameterType="java.lang.String"
+            resultType="Item">
+        select * from item where item_name like '%${value}%'
+    </select>
+    <!-- 插入产品信息-->
+    <insert id="addItem" parameterType="Item">
+
+        INSERT into item(
+        item_id, item_name, item_standard, item_unit, standard_number, customer_id, safey_stock, item_type, item_status
+        ) VALUE (#{item_id},#{item_name},#{item_standard},#{item_unit},#{standard_number},#{customer_id},#{safey_stock},#{item_type},#{item_status})
+    </insert>
+    <!-- 更新产品-->
+    <update id="updateItem" parameterType="Item">
+        UPDATE item SET
+        item_name=#{item_name},
+        item_standard=#{item_standard},
+        item_unit=#{item_unit},
+        standard_number=#{standard_number},
+        customer_id=#{customer_id},
+        safey_stock=#{safey_stock},
+        item_type=#{item_type},
+        item_status=#{item_status}
+        where item_id=#{item_id}
+    </update>
+    <delete id="deleteItem" parameterType="String">
+        DELETE item where item_id=#{id}
+    </delete>
+</mapper>

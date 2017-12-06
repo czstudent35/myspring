@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.myspring.mapper.OrdersMapper">
+<resultMap id="userordermap" type="Orders">
+    <id property="id" column="id"/>
+    <result property="user_id" column="user_id"/>
+    <result property="createtime" column="createtime"/>
+    <result property="number" column="number"/>
+    <association property="user" javaType="User">
+        <id property="id" column="user_id"/>
+        <result property="username" column="username"/>
+        <result property="address" column="address"/>
+    </association>
+
+</resultMap>
+    <!-- 查询产品名称-->
+    <select id="queryOrders" parameterType="Orders" resultType="userordermap">
+        SELECT orders.*,user.username ,user.address from orders,user
+        <where>
+          and orders.user_id=user.id
+        </where>
+    </select>
+
+</mapper>

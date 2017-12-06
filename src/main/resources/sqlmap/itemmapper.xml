@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="test">
+  <!-- 查询产品-->
+    <select id="queryItem" parameterType="Item" resultType="Item">
+        SELECT * from item
+        <where>
+            <!--<if test="item.item_id!=null and item.item_id!=''">-->
+                <!--and item_id=#{item_id}-->
+            <!--</if>-->
+            <if test="item_name!=null and item_name!=''">
+                and item_name like '%${item_name}%'
+            </if>
+        </where>
+
+    </select>
+
+
+<!--&lt;!&ndash; 根据id获取产品信息 &ndash;&gt;-->
+<!--<select id="findItemById" parameterType="String" resultType="Item">-->
+    <!--select * from item where item_id = #{id}-->
+<!--</select>-->
+<!--&lt;!&ndash; 自定义条件查询产品列表 &ndash;&gt;-->
+<!--<select id="findItemByItemName" parameterType="java.lang.String"-->
+        <!--resultType="cn.myspring.po.Item">-->
+    <!--select * from item where item_name like '%${value}%'-->
+<!--</select>-->
+
+    <!-- 插入产品-->
+    <insert id="addItem" parameterType="cn.myspring.po.Item">
+    <selectKey keyProperty="item_id" order="AFTER" resultType="java.lang.Integer">
+        select LAST_INSERT_ID()
+    </selectKey>
+    INSERT into item(item_id,item_name,item_standard,item_unit,standard_number,customer_id,safey_stock,item_type,item_status)
+    VALUE (#{item_id},#{item_name},#{item_standard},#{item_unit},#{standard_number},#{customer_id},#{safey_stock},#{item_type},#{item_status})
+</insert>
+
+<!--更新产品-->
+    <update id="alterItem" parameterType="cn.myspring.po.Item">
+        UPDATE item SET
+        item_name=#{item_name},
+        item_standard=#{item_standard},
+        item_unit=#{item_unit},
+        standard_number=#{standard_number},
+        customer_id=#{customer_id},
+        safey_stock=#{safey_stock},
+        item_type=#{item_type},
+        item_status=#{item_status}
+        where item_id=#{item_id}
+    </update>
+
+    <!-- 删除用户信息-->
+    <delete id="deleteItem" parameterType="java.lang.String">
+        DELETE  from item where item_id = #{id}
+    </delete>
+
+</mapper>
