@@ -1,8 +1,6 @@
 package cn.myspring.mapper;
 
-import cn.myspring.po.Customer;
 import cn.myspring.po.Item;
-import cn.myspring.po.QueryItem;
 import junit.framework.TestCase;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -10,7 +8,6 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.junit.Test;
 
-import java.awt.event.ItemListener;
 import java.util.*;
 import java.io.InputStream;
 
