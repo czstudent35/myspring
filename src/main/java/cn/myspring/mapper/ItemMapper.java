@@ -9,11 +9,7 @@ import java.util.*;
  */
 public interface ItemMapper {
      Item findItemById(String item_id)throws Exception;
-     List<Item> findItemByItemName(String item_name)throws Exception;
-     void addItem(Item item)throws Exception;
-    void updateItem(Item item)throws Exception;
-    void deleteItem(String id)throws Exception;
-    List<Item> queryItem1(List list)throws Exception;
+
 
 
 }
