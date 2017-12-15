@@ -1,14 +1,12 @@
-package cn.myspring.mapper;
+package cn.myspring.dao;
 
 import cn.myspring.po.Item;
-
-import java.util.*;
 
 /**
  * Created by user on 2017/12/4.
  */
 public interface ItemMapper {
-     Item findItemById(String item_id)throws Exception;
+   public  Item findItemById(String id)throws Exception;
 
 
 

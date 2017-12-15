@@ -5,18 +5,20 @@
     <title>show all users</title>
 </head>
 <body>
-<table >
-<h1>在这里将显示产品数据</h1>
-## this is :  $aa
-
-    #foreach($bb in $aa)
-
-        <tr>
-            <td >$bb.item_id</td>
-            <td >$bb.item_name</td>
-            <td >$bb.item_unit</td>
-        </tr>
-    #end
+http://blog.csdn.net/duqi_2009/article/details/47752169
+##$aa
+<h2>打印出数据</h2>
+<table border="2">
+<tr>
+    <th >产品ID</th>
+    <th >产品名称</th>
+    <th >产品单位</th>
+</tr>
+<tr>
+    <td >$aa.item_id</td>
+    <td >$aa.item_name</td>
+    <td >$aa.item_unit</td>
+</tr>
 </table>
 </body>
 </html>

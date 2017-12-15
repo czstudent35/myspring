@@ -1,0 +1,13 @@
+使用idea发现的问题
+1　在使用时User.xml表在代码中不能自动生成到包中，需要手动添加：
+如：target.class.cn.myspring.mapper中，才能够使用package扫描
+
+http://blog.csdn.net/duqi_2009/article/details/47752169 学习资料查看，Spring+Velocity+Mybatis入门
+
+日期：2017/12/15
+完成情况：
+１现终于把产品测试调通，现基本完成了最新的测试。
+２使用了velocity做显示，这个需要注意的时　pojo和List 的区别
+
+未完成的
+现在需要手动的把mapper COPY到　　mapper中，现最需要解决的问题

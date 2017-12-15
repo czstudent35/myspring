@@ -1,11 +1,12 @@
 package cn.myspring.service;
-import java.util.*;
+
 import cn.myspring.po.Item;
+import org.springframework.stereotype.Service;
 
 /**
- * Created by user on 2017/12/8.
+ * Created by user on 2017/12/12.
  */
-public interface ItemService  {
-    public Item findItemById(String item_id)throws Exception;
-
+@Service
+public interface ItemService {
+    Item findItemById(String id) throws Exception;
 }

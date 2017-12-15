@@ -1,7 +1,10 @@
 package cn.myspring.po;
 
 
+import org.springframework.stereotype.Repository;
+
 import java.util.*;
+
 
 public class Item {
 
